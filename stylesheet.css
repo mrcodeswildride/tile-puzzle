@@ -1,0 +1,89 @@
+body {
+    background-color: beige;
+}
+
+#board,
+#sidePanel {
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 30px;
+}
+
+#board {
+    border: 1px solid black;
+    font-size: 0;
+    margin-right: 30px;
+}
+
+.square {
+    display: inline-block;
+    vertical-align: top;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+
+.square.selected {
+    opacity: 0.25;
+}
+
+.tile0,
+.tile1,
+.tile2,
+.tile3,
+.tile4,
+.tile5,
+.tile6,
+.tile7,
+.tile8 {
+    background-image: url("logo.png");
+}
+
+.tile0 {
+    background-position: 0px 0px;
+}
+
+.tile1 {
+    background-position: -100px 0px;
+}
+
+.tile2 {
+    background-position: -200px 0px;
+}
+
+.tile3 {
+    background-position: 0px -100px;
+}
+
+.tile4 {
+    background-position: -100px -100px;
+}
+
+.tile5 {
+    background-position: -200px -100px;
+}
+
+.tile6 {
+    background-position: 0px -200px;
+}
+
+.tile7 {
+    background-position: -100px -200px;
+}
+
+.tile8 {
+    background-position: -200px -200px;
+}
+
+#instructions {
+    width: 325px;
+    font-size: 30px;
+    margin-top: 0px;
+    margin-bottom: 25px;
+}
+
+#message {
+    color: #ff4c00;
+    font-size: 50px;
+    margin: 0px;
+}
