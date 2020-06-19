@@ -1,57 +1,71 @@
-var squares = document.querySelectorAll(".square");
-var message = document.getElementById("message");
+let squares = document.getElementsByClassName(`square`)
+let messageParagraph = document.getElementById(`messageParagraph`)
 
-var tiles = [];
-var gameInProgress = true;
-var squareSelected = null;
+let gameOver = false
+let selectedSquare
 
-for (var i = 0; i < squares.length; i++) {
-    tiles.push("tile" + i);
+randomSetup()
+
+for (let square of squares) {
+  square.addEventListener(`click`, clickSquare)
 }
 
-for (var i = 0; i < 100; i++) {
-    var randomIndex1 = Math.floor(Math.random() * tiles.length);
-    var randomIndex2 = Math.floor(Math.random() * tiles.length);
+function randomSetup() {
+  let backgroundPositions = []
 
-    var temp = tiles[randomIndex1];
-    tiles[randomIndex1] = tiles[randomIndex2];
-    tiles[randomIndex2] = temp;
-}
-
-for (var i = 0; i < squares.length; i++) {
-    squares[i].classList.add(tiles[i]);
-    squares[i].addEventListener("click", selectSquare);
-}
-
-function selectSquare() {
-    if (gameInProgress) {
-        if (!squareSelected) {
-            this.classList.add("selected");
-            squareSelected = this;
-        }
-        else {
-            squareSelected.classList.remove("selected");
-
-            var temp = squareSelected.className;
-            squareSelected.className = this.className;
-            this.className = temp;
-
-            squareSelected = null;
-
-            if (isSolved()) {
-                message.innerHTML = "Good job!";
-                gameInProgress = false;
-            }
-        }
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      backgroundPositions.push(`${j * -100}px ${i * -100}px`)
     }
+  }
+
+  for (let i = 0; i < 100; i++) {
+    let randomNumber1 = Math.floor(Math.random() * backgroundPositions.length)
+    let randomNumber2 = Math.floor(Math.random() * backgroundPositions.length)
+
+    let temp = backgroundPositions[randomNumber1]
+    backgroundPositions[randomNumber1] = backgroundPositions[randomNumber2]
+    backgroundPositions[randomNumber2] = temp
+  }
+
+  for (let i = 0; i < squares.length; i++) {
+    squares[i].style.backgroundPosition = backgroundPositions[i]
+  }
+}
+
+function clickSquare() {
+  if (!gameOver) {
+    if (selectedSquare == null) {
+      selectedSquare = this
+      selectedSquare.classList.add(`selected`)
+    }
+    else {
+      let temp = selectedSquare.style.backgroundPosition
+      selectedSquare.style.backgroundPosition = this.style.backgroundPosition
+      this.style.backgroundPosition = temp
+
+      selectedSquare.classList.remove(`selected`)
+      selectedSquare = null
+
+      if (isSolved()) {
+        messageParagraph.innerHTML = `Good job!`
+        gameOver = true
+      }
+    }
+  }
 }
 
 function isSolved() {
-    for (var i = 0; i < squares.length; i++) {
-        if (!squares[i].classList.contains("tile" + i)) {
-            return false;
-        }
-    }
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      let index = (i * 3) + j
+      let correctPosition = `${j * -100}px ${i * -100}px`
 
-    return true;
+      if (squares[index].style.backgroundPosition != correctPosition) {
+        return false
+      }
+    }
+  }
+
+  return true
 }
