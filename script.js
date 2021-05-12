@@ -38,8 +38,7 @@ function clickSquare() {
     if (selectedSquare == null) {
       selectedSquare = this
       selectedSquare.classList.add(`selected`)
-    }
-    else {
+    } else {
       let temp = selectedSquare.style.backgroundPosition
       selectedSquare.style.backgroundPosition = this.style.backgroundPosition
       this.style.backgroundPosition = temp
@@ -58,7 +57,7 @@ function clickSquare() {
 function isSolved() {
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 3; j++) {
-      let index = (i * 3) + j
+      let index = i * 3 + j
       let correctPosition = `${j * -100}px ${i * -100}px`
 
       if (squares[index].style.backgroundPosition != correctPosition) {

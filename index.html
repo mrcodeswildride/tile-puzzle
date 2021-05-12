@@ -1,44 +1,36 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Tile Puzzle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" rel="stylesheet" />
+    <script src="script.js" defer></script>
+  </head>
 
-<head>
-	<title>Tile Puzzle</title>
-	<meta name="viewport" content="width=device-width, initial-scale=0.5">
-	<link href="style.css" rel="stylesheet">
-	<script src="script.js" defer>
+  <body>
+    <h1>Tile Puzzle</h1>
 
-	</script>
+    <div id="grid">
+      <div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+      </div>
+      <div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+      </div>
+      <div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+      </div>
+    </div>
 
-</head>
-
-<body>
-	<h1>Tile Puzzle</h1>
-
-	<div id="grid">
-		<div>
-			<div class="square"></div>
-			<div class="square"></div>
-			<div class="square"></div>
-		</div>
-		<div>
-			<div class="square"></div>
-			<div class="square"></div>
-			<div class="square"></div>
-		</div>
-		<div>
-			<div class="square"></div>
-			<div class="square"></div>
-			<div class="square"></div>
-		</div>
-	</div>
-
-	<div id="sidePanel">
-		<p id="instructions">
-			Click two tiles to swap them.
-		</p>
-
-		<p id="messageParagraph"></p>
-	</div>
-</body>
-
+    <div id="sidePanel">
+      <p id="instructions">Click two tiles to swap them.</p>
+      <p id="messageParagraph"></p>
+    </div>
+  </body>
 </html>
